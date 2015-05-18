@@ -11,9 +11,11 @@ import java.net.Socket;
 public class SocketClient {
 
     Socket connection;
+    boolean initialized = false;
 
     public SocketClient(String host, int port) throws Throwable{
         connection = new Socket(host, port);
+        initialized = true;
     }
 
     public void sendMessageSocket(String message) throws Throwable {
@@ -31,6 +33,10 @@ public class SocketClient {
 
     public boolean isConnected(){
         return connection.isConnected();
+    }
+
+    public boolean isInitialized(){
+        return initialized;
     }
 
 }
