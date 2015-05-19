@@ -50,26 +50,31 @@ void vola(int potenza){
   analogWrite(DD, potenza);
 }
 
+
 void avanti(){
   analogWrite(DS, pt_attuale + 50);
   analogWrite(DD, pt_attuale + 50);
+  delay(500);
   vola(pt_attuale);
 }
 
 void indietro(){
   analogWrite(AS, pt_attuale + 50);
   analogWrite(AD, pt_attuale + 50);
+  delay(500);  
   vola(pt_attuale);
 }
 
 void sinistra(){
   analogWrite(AD, pt_attuale + 50);
   analogWrite(DD, pt_attuale + 50);
+  delay(500);
   vola(pt_attuale);
 }
 
 void destra(){
   analogWrite(AS, pt_attuale + 50);
   analogWrite(DS, pt_attuale + 50);
+  delay(500);
   vola(pt_attuale);
 }
