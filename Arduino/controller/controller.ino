@@ -8,7 +8,7 @@
 #include <Servo.h>
 #include <SoftwareSerial.h>
 
-SoftwareSerial serial_esp8266(12, 11);
+SoftwareSerial esp8266(12, 11);
 
 int message;
 int altezza;
@@ -18,19 +18,45 @@ Servo as, ad, ds, dd;
 
 void setup() {
   Serial.begin(9600); //Comunicazione via usb
+  Serial.println("Check del sistema. Attendere.");
   
-  serial_esp8266.begin(); //Comunicazione con il modulo Wi-Fi
+  esp8266.begin(9600); //Comunicazione con il modulo Wi-Fi
   
   //Configurazione dei servo
   as.attach(AS);
   ad.attach(AD);
   ds.attach(DS);
   dd.attach(DD);
+
+  esp8266.println("AT+RST");
+  esp8266.println("AT+CWMODE=3");
+  esp8266.println("AT+CIPMUX=0");
+  esp8266.println("AT+CIPSERVER=1,8569");
+    
+  delay(1000);
+  Serial.println("Pronto a ricevere un comando");
 }
 
 void loop() {
-  message = Serial.parseInt(); //Leggi il messaggio dal seriale
+  
+    if (Serial.available()){
+    message = Serial.parseInt(); //Leggi il messaggio dal seriale
+    doActions();
+  }
+  
+  if (esp8266.available()){
+    if(esp8266.find("+IPD,")){
+      delay(500);
+      if (esp8266.find(":")){
+        message = esp8266.parseInt(); //Leggi il messaggio dal seriale
+        doActions();
+      }
+    }
+  }
+  
+}
 
+void doActions(){
   if (message < 100){
   
     switch(message){
@@ -52,7 +78,6 @@ void loop() {
     pt_attuale = message - 100;
     vola(pt_attuale);
   }  
-  
 }
 
 void vola(int potenza){
@@ -65,29 +90,29 @@ void vola(int potenza){
 
 
 void avanti(){
-  ds.write(potenza + vel);
-  dd.write(potenza + vel);
+  ds.write(pt_attuale + vel);
+  dd.write(pt_attuale + vel);
   delay(500);
   vola(pt_attuale);
 }
 
 void indietro(){
-  as.write(potenza + vel);
-  ad.write(potenza + vel);
+  as.write(pt_attuale + vel);
+  ad.write(pt_attuale + vel);
   delay(500);  
   vola(pt_attuale);
 }
 
 void sinistra(){
-  ad.write(potenza + vel);
-  dd.write(potenza + vel);
+  ad.write(pt_attuale + vel);
+  dd.write(pt_attuale + vel);
   delay(500);
   vola(pt_attuale);
 }
 
 void destra(){
-  as.write(potenza);
-  ds.write(potenza);
+  as.write(pt_attuale + vel);
+  ds.write(pt_attuale + vel);
   delay(500);
   vola(pt_attuale);
 }
