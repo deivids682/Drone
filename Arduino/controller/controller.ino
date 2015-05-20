@@ -11,7 +11,7 @@
 SoftwareSerial esp8266(12, 11);
 
 int message;
-int altezza;
+int altezza = 0;
 int pt_attuale;
 
 Servo as, ad, ds, dd;
@@ -39,7 +39,9 @@ void setup() {
 
 void loop() {
   
-    if (Serial.available()){
+  vola(0); //reset iniziale
+  
+  if (Serial.available()){
     message = Serial.parseInt(); //Leggi il messaggio dal seriale
     doActions();
   }
