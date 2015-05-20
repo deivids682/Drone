@@ -6,6 +6,9 @@
 #define vel 5
 
 #include <Servo.h>
+#include <SoftwareSerial.h>
+
+SoftwareSerial serial_esp8266(12, 11);
 
 int message;
 int altezza;
@@ -14,7 +17,11 @@ int pt_attuale;
 Servo as, ad, ds, dd;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(9600); //Comunicazione via usb
+  
+  serial_esp8266.begin(); //Comunicazione con il modulo Wi-Fi
+  
+  //Configurazione dei servo
   as.attach(AS);
   ad.attach(AD);
   ds.attach(DS);
@@ -22,7 +29,7 @@ void setup() {
 }
 
 void loop() {
-  message = Serial.parseInt();
+  message = Serial.parseInt(); //Leggi il messaggio dal seriale
 
   if (message < 100){
   
