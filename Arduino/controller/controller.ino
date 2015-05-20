@@ -33,14 +33,13 @@ void setup() {
   esp8266.println("AT+CIPMUX=0");
   esp8266.println("AT+CIPSERVER=1,8569");
     
+  vola(0); //reset iniziale
+  
   delay(1000);
   Serial.println("Pronto a ricevere un comando");
 }
 
-void loop() {
-  
-  vola(0); //reset iniziale
-  
+void loop() {  
   if (Serial.available()){
     message = Serial.parseInt(); //Leggi il messaggio dal seriale
     doActions();
