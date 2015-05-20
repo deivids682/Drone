@@ -3,16 +3,22 @@
 #define DS 9
 #define DD 6
 
+#define vel 5
+
+#include <Servo.h>
+
 int message;
 int altezza;
 int pt_attuale;
 
+Servo as, ad, ds, dd;
+
 void setup() {
   Serial.begin(9600);
-  pinMode(AS, OUTPUT);
-  pinMode(AD, OUTPUT);
-  pinMode(DS, OUTPUT);
-  pinMode(DD, OUTPUT);
+  as.attach(AS);
+  ad.attach(AD);
+  ds.attach(DS);
+  dd.attach(DD);
 }
 
 void loop() {
@@ -44,37 +50,37 @@ void loop() {
 
 void vola(int potenza){
   altezza = potenza;
-  analogWrite(AS, potenza);
-  analogWrite(AD, potenza);
-  analogWrite(DS, potenza);
-  analogWrite(DD, potenza);
+  as.write(potenza);
+  ad.write(potenza);
+  ds.write(potenza);
+  dd.write(potenza);
 }
 
 
 void avanti(){
-  analogWrite(DS, pt_attuale + 50);
-  analogWrite(DD, pt_attuale + 50);
+  ds.write(potenza + vel);
+  dd.write(potenza + vel);
   delay(500);
   vola(pt_attuale);
 }
 
 void indietro(){
-  analogWrite(AS, pt_attuale + 50);
-  analogWrite(AD, pt_attuale + 50);
+  as.write(potenza + vel);
+  ad.write(potenza + vel);
   delay(500);  
   vola(pt_attuale);
 }
 
 void sinistra(){
-  analogWrite(AD, pt_attuale + 50);
-  analogWrite(DD, pt_attuale + 50);
+  ad.write(potenza + vel);
+  dd.write(potenza + vel);
   delay(500);
   vola(pt_attuale);
 }
 
 void destra(){
-  analogWrite(AS, pt_attuale + 50);
-  analogWrite(DS, pt_attuale + 50);
+  as.write(potenza);
+  ds.write(potenza);
   delay(500);
   vola(pt_attuale);
 }
