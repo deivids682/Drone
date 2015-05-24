@@ -22,7 +22,6 @@ void setup() {
   
   esp8266.begin(9600); //Comunicazione con il modulo Wi-Fi
 
-  delay(2000);
   //Configurazione dei servo
   as.attach(AS);
   ad.attach(AD);
@@ -30,11 +29,14 @@ void setup() {
   dd.attach(DD);
 
   esp8266.println("AT+RST");
-  esp8266.println("AT+CWMODE=3");
-  esp8266.println("AT+CIPMUX=0");
-  esp8266.println("AT+CIPSERVER=1,8569");
-  
   delay(1000);
+  esp8266.println("AT+CWMODE=3");
+  delay(1000);
+  esp8266.println("AT+CIPMUX=0");
+  delay(1000);
+  esp8266.println("AT+CIPSERVER=1,8569");
+  delay(1000);
+  
   Serial.println("Pronto a ricevere un comando");
 }
 
@@ -76,6 +78,8 @@ void doActions(){
         destra();
         break;
     }
+    
+    Serial.println(message);
     
   } else {
     pt_attuale = message - 100;
