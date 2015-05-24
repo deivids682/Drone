@@ -20,7 +20,7 @@ void setup() {
   Serial.begin(9600); //Comunicazione via usb
   Serial.println("Check del sistema. Attendere.");
   
-  esp8266.begin(9600); //Comunicazione con il modulo Wi-Fi
+  esp8266.begin(115200); //Comunicazione con il modulo Wi-Fi
 
   //Configurazione dei servo
   as.attach(AS);
