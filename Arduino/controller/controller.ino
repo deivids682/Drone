@@ -83,6 +83,7 @@ void doActions(){
     
   } else {
     pt_attuale = message - 100;
+    pt_attuale = map(val, 0, 1000, 0, 180); 
     vola(pt_attuale);
   }  
 }
