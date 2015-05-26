@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else if (socketClient.isInitialized()) {
                 switch (v.getId()) {
                     case R.id.button5: //Aumenta altezza
-                        altezza = altezza+10; if (altezza > 300) altezza = 350;
+                        altezza = altezza+10; if (altezza > 1100) altezza = 1100;
                         break;
                     case R.id.button6: //Diminuisci altezza
                         altezza = altezza-10; if (altezza < 100) altezza = 100;
