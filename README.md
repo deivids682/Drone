@@ -8,7 +8,7 @@ Drone arduino controllato via Wi-Fi.
 3. Sinistra 
 4. Destra 
 
-Qualsiasi valore compreso tra 100 e 1100: Altezza
+Qualsiasi valore compreso tra 160 e 260: Altezza
 
 ## Collegamento
 
