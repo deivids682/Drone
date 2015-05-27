@@ -1,4 +1,4 @@
-# Drone
+<img src="https://raw.githubusercontent.com/eliseomartelli/Drone/master/title.png" alt="Smiley face">
 Drone arduino controllato via Wi-Fi.
 
 Ultima versione: It's not ghosts and stuffs.
