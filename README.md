@@ -16,4 +16,4 @@ Qualsiasi valore compreso tra 100 e 1100: Altezza
 
 ## App Android
 
-Download
+<a href="https://github.com/eliseomartelli/Drone/raw/master/DroneControllerAndroid/app/app-compilata.apk">Download APK</a>
