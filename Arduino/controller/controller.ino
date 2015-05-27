@@ -42,8 +42,6 @@ void setup() {
 
 void loop() { 
   
-  vola(altezza); //reset iniziale
-  
   if (Serial.available()){
     message = Serial.parseInt(); //Leggi il messaggio dal seriale
     doActions();
@@ -62,8 +60,8 @@ void loop() {
 }
 
 void doActions(){
-  if (message < 100){
-  
+  if (message <= 100){
+    
     switch(message){
       case 1:
         avanti();
@@ -79,13 +77,12 @@ void doActions(){
         break;
     }
     
-    Serial.println(message);
-    
   } else {
     pt_attuale = message - 100;
-    pt_attuale = map(val, 0, 1000, 0, 180 - vel); 
     vola(pt_attuale);
   }  
+
+  Serial.println(message);
 }
 
 void vola(int potenza){
