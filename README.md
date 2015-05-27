@@ -1,6 +1,13 @@
 # Drone
 Drone arduino controllato via Wi-Fi.
 
+Ultima versione: It's not ghosts and stuffs.
+
+Il nome della versione significa che il progetto non è un "fantasma" ma qualcosa che realmente può funzionare.
+Un progetto che può essere ampliato e portato avanti, non una cosa statica, quasi inesistente.
+
+Amiamo quello che facciamo.
+
 ## Comandi seriali
 
 1. Avanti
