@@ -19,7 +19,7 @@ Qualsiasi valore compreso tra 160 e 260: Altezza
 
 ## Collegamento
 
-<img src="https://github.com/eliseomartelli/Drone/blob/master/drone.png?raw=true" alt="Smiley face" height="400" width="400">
+<img src="https://github.com/eliseomartelli/Drone/blob/master/drone.png?raw=true">
 
 ## App Android
 
